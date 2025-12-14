@@ -1,527 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anvicon Infra Pvt Ltd | Future-Ready Construction</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Failure - Modern Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <script src="https://unpkg.com/scrollreveal"></script>
-
     <style>
-        /* --- Corporate Color Variables (Light Mode Default) --- */
+        /* --- 1. CORE STYLING --- */
         :root {
-            --primary-color: #004d99; /* Navy Blue */
-            --secondary-color: #f7931e; /* Orange */
-            --bg-body: #ffffff; 
-            --bg-section: #f4f7f9; 
-            --text-main: #212529;
-            --text-sub: #6c757d;
-            --card-bg: #ffffff;
-            --card-border: rgba(0, 0, 0, 0.1);
-            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --accent: #00cec9;
+            --dark: #2d3436;
+            --light: #dfe6e9;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #6c5ce7, #0984e3);
         }
 
-        .dark-mode {
-            --primary-color: #4a90e2; /* Lighter Blue */
-            --secondary-color: #ffb74d; /* Lighter Orange */
-            --bg-body: #121212; /* Dark Gray */
-            --bg-section: #1f1f1f; /* Slightly lighter dark */
-            --text-main: #e0e0e0; /* Off-white */
-            --text-sub: #b0b0b0; /* Light Gray */
-            --card-bg: #2d2d2d;
-            --card-border: rgba(255, 255, 255, 0.1);
-            --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.4);
+        html {
+            scroll-behavior: smooth; /* Makes the link clicking smooth */
         }
 
-        /* --- KEY FIX: Override Bootstrap Text Utilities in Dark Mode --- */
-        .dark-mode .text-dark { color: var(--text-main) !important; }
-        .dark-mode .text-muted { color: var(--text-sub) !important; }
-        .dark-mode .text-secondary { color: var(--secondary-color) !important; }
-        .dark-mode .lead { color: var(--text-main) !important; }
-        
-        /* --- Base Styles --- */
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            transition: background-color 0.4s, color 0.4s;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f3f5;
+            color: var(--dark);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, .brand-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--text-main); /* Ensure headings use variable */
-        }
-
-        /* --- Navbar --- */
-        nav {
-            background: var(--bg-body);
-            border-bottom: 3px solid var(--primary-color);
-            box-shadow: var(--shadow-subtle);
-            transition: background 0.4s, border-bottom 0.4s;
-        }
-
-        .navbar-brand {
-            color: var(--primary-color) !important;
-            font-weight: 900;
-            font-size: 1.6rem;
-        }
-        
-        .navbar-brand span { 
-            color: var(--text-main); 
-            transition: color 0.4s;
-        }
-
-        .nav-link {
-            color: var(--text-sub) !important;
-            transition: 0.3s;
-            font-weight: 500;
-            margin: 0 5px;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-color) !important;
-        }
-
-        /* --- Theme Toggle --- */
-        #theme-toggle {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-subtle);
-            transition: background-color 0.3s;
-        }
-        
-        #theme-toggle:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .dark-mode #theme-toggle i.fa-sun { display: inline-block; }
-        .dark-mode #theme-toggle i.fa-moon { display: none; }
-        #theme-toggle i.fa-sun { display: none; }
-        #theme-toggle i.fa-moon { display: inline-block; }
-
-        /* --- Hero Section --- */
-        .hero-section {
-            position: relative;
-            width: 100%;
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        
-        .back-video {
-            position: absolute;
+        /* --- 2. NAVBAR (Right Aligned & Glass Effect) --- */
+        .navbar {
+            position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: grayscale(100%) brightness(0.6) contrast(1.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.85); /* See-through glass effect */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: left;
-            max-width: 900px;
-            padding-left: 0;
-            color: white;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            color: white !important;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            max-width: 650px;
-            font-weight: 300;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
-        }
-
-        .btn-official {
-            display: inline-block;
-            padding: 12px 35px;
-            background: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            color: white;
+        .logo {
             font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
-            border-radius: 4px;
-            transition: 0.3s;
         }
 
-        .btn-official:hover {
-            background: transparent;
-            color: white;
-            border-color: white;
+        .nav-links {
+            display: flex;
+            gap: 30px;
         }
 
-        /* --- Sections --- */
-        .section-padding { padding: 80px 0; }
-        #about { background-color: var(--bg-section); transition: background-color 0.4s; }
-        #verticals { background-color: var(--bg-body); transition: background-color 0.4s; }
-        #usp { background-color: var(--bg-section); transition: background-color 0.4s; }
-        #leadership { background-color: var(--bg-body); transition: background-color 0.4s; }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: var(--primary-color);
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
             position: relative;
-            display: inline-block;
+            transition: color 0.3s ease;
         }
 
-        /* --- Cards --- */
-        .tech-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 35px 25px;
-            height: 100%;
-            transition: 0.3s;
-            box-shadow: var(--shadow-subtle);
-        }
-        
-        .tech-card h3, .tech-card h4 {
-            color: var(--text-main);
-        }
-        
-        .tech-card p {
-            color: var(--text-sub);
+        /* Fun underline animation for links */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+            border-radius: 2px;
         }
 
-        .tech-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        .tech-card i {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        /* --- USP Card --- */
-        .usp-card {
-            transition: background-color 0.3s;
-        }
-        .usp-card:hover {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        /* --- Leader Card --- */
-        .leader-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-left: 5px solid var(--secondary-color);
-            box-shadow: var(--shadow-subtle);
-            height: 100%;
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            height: 60vh;
+            background: var(--gradient);
             display: flex;
             flex-direction: column;
             justify-content: center;
-            transition: background-color 0.4s;
-        }
-        
-        .leader-name {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--text-main);
-        }
-
-        .leader-role {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--primary-color);
-            padding: 50px 0 30px;
+            align-items: center;
+            text-align: center;
             color: white;
+            padding-top: 60px; /* Space for navbar */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Slanted bottom edge */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* --- 4. CONTENT SECTIONS --- */
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- 5. POEM CARDS (GRID LAYOUT) --- */
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            border-bottom: 5px solid transparent;
+            opacity: 0; /* Hidden initially for scroll animation */
+            transform: translateY(30px);
+        }
+
+        /* Specific border colors for variety */
+        .card:nth-child(odd) { border-bottom-color: var(--primary); }
+        .card:nth-child(even) { border-bottom-color: var(--accent); }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            display: block;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        /* --- 6. EXAM & KEY POINTS SECTION --- */
+        .highlight-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
             text-align: center;
         }
 
-        .footer-social a {
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: var(--light);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            transition: background 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--accent);
             color: white;
-            transition: color 0.3s;
+        }
+
+        /* --- 7. WORKSHEETS & ABOUT (Placeholders) --- */
+        .placeholder-box {
+            background: linear-gradient(to right, #8e44ad, #3498db);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 20px;
         }
         
-        .footer-social a:hover { color: var(--secondary-color); }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content { 
-                text-align: center; 
-                align-items: center;
-                margin: 0 auto;
-            }
-            .hero-title { font-size: 2.8rem; }
-            .section-title { text-align: center; display: block;}
+        button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 15px;
         }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- ANIMATIONS KEYFRAMES --- */
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Class to trigger scroll reveal */
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     </style>
-  </head>
-  <body>
+</head>
+<body>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
-      <div class="container">
-        <a class="navbar-brand brand-logo" href="#">
-          <i class="fa-solid fa-building-shield me-2"></i>Anvicon<span>Infra</span>
-        </a>
-        
-        <div class="d-flex align-items-center order-lg-last ms-3">
-             <button id="theme-toggle" class="btn me-3" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-            </button>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar">
+        <a href="#" class="logo">🚀 StudyHub</a>
+        <div class="nav-links">
+            <a href="#about">About Us</a>
+            <a href="#poems">Poems</a>
+            <a href="#worksheets">WorkSheets</a>
         </div>
-       
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="#verticals">Sectors</a></li>
-            <li class="nav-item"><a class="nav-link" href="#usp">Commitment</a></li>
-            <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
     </nav>
 
-    <div class="hero-section" id="home">
-      <video autoplay loop muted playsinline class="back-video">
-        <source src="./media/Power and Beauty of Construction Sites A Cinematic Reel_720p.mp4" type="video/mp4" />
-      </video>
+    <header class="hero">
+        <h1>Failure</h1>
+        <p>Analysis • Theme • Poetic Devices</p>
+    </header>
 
-      <div class="container h-100">
-        <div class="d-flex flex-column justify-content-center h-100 hero-content">
-            <h1 class="hero-title reveal-left">Excellence in<br>Infrastructure</h1>
-            <p class="hero-subtitle reveal-left">
-                Anvicon Infra Pvt Ltd delivers high-quality, reliable, and sustainable construction projects across India.
-            </p>
-            <div class="reveal-left">
-                <a href="#about" class="btn-official mt-3">Our Mission</a>
+    <section id="poems" class="section-container">
+        <h2 class="section-title">✨ Stanza Analysis</h2>
+        
+        <div class="grid-wrapper">
+            <div class="card reveal-on-scroll">
+                <h3>⛰️ Stanza 1: The Hill</h3>
+                <span class="quote">“Failure is a rocky hill... Climb it with a will!”</span>
+                <p>Failure is hard like a hill. Don't stop—climb it with determination!</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>🦴 Stanza 2: The Bone</h3>
+                <span class="quote">“Failure is a broken bone... Set it! Grin!”</span>
+                <p>It hurts, but you must fix it. Don't complain; smile and heal.</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>🧵 Stanza 3: The String</h3>
+                <span class="quote">“Failure is a tangled string... Puzzle out!”</span>
+                <p>Problems can be messy. Use patience to untangle the knots.</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>🌊 Stanza 4: The River</h3>
+                <span class="quote">“Failure is a river swift... Swim it!”</span>
+                <p>Don't drift aimlessly. Take control and swim against the current.</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>🌿 Stanza 5: The Morass</h3>
+                <span class="quote">“Failure is a black morass... Cross it!”</span>
+                <p>Even in a swamp, there are safe spots (tufts of grass). Find hope.</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>🕳️ Stanza 6: The Pit</h3>
+                <span class="quote">“Failure is a treacherous pit... Scramble!”</span>
+                <p>If you fall, don't stay there. Scramble and climb out immediately.</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>🌃 Stanza 7: The Night</h3>
+                <span class="quote">“Failure is an inky night... Sing!”</span>
+                <p>Darkness isn't permanent. Sing and wait for the morning light.</p>
+            </div>
+
+            <div class="card reveal-on-scroll">
+                <h3>💎 Stanza 8: The Diamond</h3>
+                <span class="quote">“Failure is an ugly coal... Fuse it!”</span>
+                <p>Pressure turns coal into a diamond. Failure makes your soul brilliant.</p>
             </div>
         </div>
-      </div>
-    </div>
 
-    <section class="section-padding" id="about">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6 reveal-left">
-                    <h2 class="section-title text-start mb-4">About Anvicon Infra</h2>
-                    <h3 class="text-secondary mb-3 fs-4" style="font-weight: 300;">Engineering Excellence Since 2025</h3>
-                    <p class="lead text-dark">Anvicon Infra Pvt Ltd is a premier infrastructure company built on the legacy of **Anvikshiki Constructions**.</p>
-                    <p class="text-muted">We combine rigorous technical expertise with a commitment to corporate responsibility, ensuring every project is delivered with precision, transparency, and a focus on long-term sustainability.</p>
-                </div>
-                <div class="col-lg-6 reveal-right">
-                    <div class="p-4 rounded tech-card border-start border-5 h-100" style="border-color: var(--secondary-color) !important;">
-                        <i class="fa-solid fa-handshake fa-2x mb-3" style="color: var(--secondary-color) !important;"></i>
-                        <h4 class="text-dark">Proven Track Record</h4>
-                        <p class="text-muted">Successfully executed critical logistics infrastructure for **Welspun One** across key industrial centers in Karnataka (Malur, Hoskote, Devanahalli).</p>
-                        <a href="#leadership" class="text-decoration-none fw-bold" style="color: var(--primary-color);">Meet the Team <i class="fa-solid fa-arrow-right-long ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding" id="verticals">
-        <div class="container">
-            <div class="text-center mb-5">
-                 <h2 class="section-title">Core Business Sectors</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4 reveal-left">
-                    <div class="tech-card text-center h-100">
-                        <i class="fa-solid fa-truck-fast"></i>
-                        <h3>Logistics & Parks</h3>
-                        <p>Specializing in modern, high-volume facilities optimized for supply chain efficiency.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 reveal-bottom">
-                    <div class="tech-card text-center h-100">
-                        <i class="fa-solid fa-industry"></i>
-                        <h3>Commercial</h3>
-                        <p>Developing state-of-the-art office spaces and corporate hubs designed for productivity.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 reveal-right">
-                    <div class="tech-card text-center h-100">
-                        <i class="fa-solid fa-city"></i>
-                        <h3>Residential</h3>
-                        <p>Constructing high-quality housing solutions meeting rigorous safety standards.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding" id="usp">
-        <div class="container">
-             <div class="text-center mb-5">
-                <h2 class="section-title">Our Commitment</h2>
-                <p class="text-muted mt-2">Four pillars that define our professional standard.</p>
-             </div>
-            
-            <div class="row text-center g-4">
-                <div class="col-md-6 col-lg-3 reveal-left">
-                    <div class="usp-card h-100 p-3">
-                        <i class="fa-regular fa-clock fa-2x text-primary mb-3"></i>
-                        <h5 class="text-dark">Timely Delivery</h5>
-                        <p class="small text-muted">Meticulous planning ensuring completion on or ahead of schedule.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 reveal-bottom">
-                    <div class="usp-card h-100 p-3">
-                        <i class="fa-solid fa-seedling fa-2x text-primary mb-3"></i>
-                        <h5 class="text-dark">Sustainability</h5>
-                        <p class="small text-muted">Integrating green building techniques for resource efficiency.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 reveal-bottom">
-                    <div class="usp-card h-100 p-3">
-                        <i class="fa-solid fa-cogs fa-2x text-primary mb-3"></i>
-                        <h5 class="text-dark">Technology</h5>
-                        <p class="small text-muted">Leveraging BIM and advanced software for structural accuracy.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 reveal-right">
-                    <div class="usp-card h-100 p-3">
-                        <i class="fa-solid fa-hand-holding-dollar fa-2x text-primary mb-3"></i>
-                        <h5 class="text-dark">Value Engineering</h5>
-                        <p class="small text-muted">Optimizing costs without compromising structural integrity.</p>
-                    </div>
-                </div>
+        <div class="highlight-section reveal-on-scroll">
+            <h2>⭐ Quick Revision Guide</h2>
+            <p>Remember these keywords for your exam!</p>
+            <div class="tag-container">
+                <span class="tag">Determination</span>
+                <span class="tag">Resilience</span>
+                <span class="tag">Metaphor</span>
+                <span class="tag">Optimism</span>
+                <span class="tag">Transformation</span>
+                <span class="tag">Hope</span>
             </div>
         </div>
     </section>
 
-    <section class="section-padding" id="leadership">
-        <div class="container">
-             <div class="text-center mb-5">
-                <h2 class="section-title">Founding Leadership</h2>
-             </div>
-            <div class="row g-4 justify-content-center">
-                
-                <div class="col-md-6 reveal-left">
-                    <div class="leader-card h-100">
-                        <div class="leader-name">Abhilash Chiranjeevi</div>
-                        <div class="leader-role">Director | Technical Operations</div>
-                        <p class="mb-1 text-muted small"><strong>Education:</strong> Civil Eng., M. Tech Structure</p>
-                        <p class="small text-muted mt-2">Provides comprehensive structural oversight, leveraging over a decade of deep engineering experience across complex projects.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 reveal-right">
-                    <div class="leader-card h-100">
-                        <div class="leader-name">P. Rajesh Kumar</div>
-                        <div class="leader-role">Director | Project Management</div>
-                        <p class="mb-1 text-muted small"><strong>Education:</strong> Eng. (ECE), Masters Power Systems</p>
-                        <p class="small text-muted mt-2">Focuses on robust project execution, contract management, and operational efficiency based on 7+ years in infrastructure.</p>
-                    </div>
-                </div>
-
-            </div>
+    <section id="worksheets" class="section-container">
+        <h2 class="section-title">📝 WorkSheets</h2>
+        <div class="placeholder-box reveal-on-scroll">
+            <h3>Practice Makes Perfect!</h3>
+            <p>Download the Q&A worksheet for the poem "Failure".</p>
+            <button onclick="alert('Downloading Worksheet... (Demo)')">Download PDF ⬇️</button>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="container">
-            <h3 class="mb-3 text-white brand-logo"><i class="fa-solid fa-building-shield me-2"></i>ANVICON INFRA</h3>
-            <p>Committed to Building a Sustainable Future.</p>
-            <div class="mb-4 footer-social">
-                <a href="#" class="mx-3"><i class="fa-brands fa-linkedin fa-xl"></i></a>
-                <a href="#" class="mx-3"><i class="fa-brands fa-twitter fa-xl"></i></a>
-                <a href="#" class="mx-3"><i class="fa-solid fa-envelope fa-xl"></i></a>
-            </div>
-            <p class="small mb-0">&copy; 2025 Anvicon Infra Pvt Ltd. All Rights Reserved.</p>
+    <section id="about" class="section-container">
+        <h2 class="section-title">👋 About Us</h2>
+        <div class="card reveal-on-scroll" style="text-align: center;">
+            <h3>We Make Learning Fun</h3>
+            <p>This page was created to help students revise English poems with ease and style. We believe study notes shouldn't be boring!</p>
         </div>
-    </footer>
+    </section>
 
     <script>
-      // --- Theme Switching Script ---
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
-      const themeKey = 'anvicon-theme';
+        // Simple Intersection Observer to trigger animations when elements scroll into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
 
-      function applyThemePreference() {
-          const savedTheme = localStorage.getItem(themeKey);
-          if (savedTheme === 'dark') {
-              body.classList.add('dark-mode');
-          } else if (savedTheme === 'light') {
-              body.classList.remove('dark-mode');
-          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              body.classList.add('dark-mode');
-          }
-      }
-
-      themeToggle.addEventListener('click', () => {
-          body.classList.toggle('dark-mode');
-          if (body.classList.contains('dark-mode')) {
-              localStorage.setItem(themeKey, 'dark');
-          } else {
-              localStorage.setItem(themeKey, 'light');
-          }
-      });
-      
-      applyThemePreference();
-
-      // --- ScrollReveal ---
-      ScrollReveal({
-        reset: false,
-        distance: "40px",
-        duration: 900,
-        delay: 100,
-      });
-      
-      ScrollReveal().reveal(".reveal-left", { origin: "left" });
-      ScrollReveal().reveal(".reveal-right", { origin: "right" });
-      ScrollReveal().reveal(".reveal-bottom", { origin: "bottom", interval: 100 });
+        // Target all elements with the 'reveal-on-scroll' class
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
     </script>
-    
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+</body>
 </html>
