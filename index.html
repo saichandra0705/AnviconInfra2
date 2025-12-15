@@ -3,472 +3,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 8 English Poetry Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Poetry Masterclass | Class 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6c5ce7;
-            --secondary: #00cec9;
-            --accent: #fdcb6e;
-            --dark: #2d3436;
-            --light: #f4f7f6;
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --primary: #6366f1;
+            --accent: #ec4899;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass: blur(20px) saturate(180%);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #dfe6e9;
-            background-image: radial-gradient(#b2bec3 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: var(--dark);
-            margin: 0;
-            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+            color: var(--text-main);
+            overflow-x: hidden;
         }
 
-        /* --- Navigation --- */
+        /* --- Floating Navigation --- */
         nav {
-            background: var(--primary);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: var(--glass);
+            -webkit-backdrop-filter: var(--glass);
+            border: 1px solid var(--card-border);
+            padding: 12px 30px;
+            border-radius: 50px;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        .logo {
-            color: white;
-            font-family: 'Nunito', sans-serif;
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.3;
+            z-index: -1;
+            top: 20%;
+            left: 20%;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 40px;
+            animation: fadeUp 1s ease-out 0.2s backwards;
+        }
+
+        .cta-btn {
+            background: var(--text-main);
+            color: var(--bg-color);
+            padding: 16px 45px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 800;
-            font-size: 1.5rem;
-            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeUp 1s ease-out 0.4s backwards;
         }
 
-        .nav-links { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 5px; }
-        .nav-links::-webkit-scrollbar { height: 0px; }
-        
-        .nav-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            transition: all 0.3s ease;
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
         }
 
-        .nav-btn:hover { background: white; color: var(--primary); transform: translateY(-2px); }
-
-        /* --- Layout --- */
+        /* --- Main Content Grid (Bento Layout) --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* --- Hero Section --- */
-        .hero-box {
-            background: linear-gradient(135deg, #a29bfe, #74b9ff);
-            border-radius: 30px;
-            padding: 60px 20px;
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
             text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Modern Card Styling */
+        .poem-container {
+            margin-bottom: 120px;
+            padding-top: 60px; 
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+            grid-auto-rows: minmax(150px, auto);
+        }
+
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 35px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            background: rgba(40, 50, 75, 0.9);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .col-12 { grid-column: span 12; }
+        .col-8 { grid-column: span 8; }
+        .col-6 { grid-column: span 6; }
+        .col-4 { grid-column: span 4; }
+
+        .card-label {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Visual Box - Image Handling */
+        .visual-box {
+            padding: 0; /* Remove padding for full image */
+            min-height: 300px;
+            border: 0;
+            overflow: hidden; /* Ensure image overflow is hidden for border-radius */
+        }
+        
+        .visual-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: brightness(0.85);
+            border-radius: 28px; /* Apply border radius to the image itself */
+        }
+
+        .visual-box:hover img { 
+            transform: scale(1.05); 
+            filter: brightness(1);
+        }
+
+        .visual-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Chips */
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .chip {
+            background: rgba(255,255,255,0.08);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- Quiz Section (Gamified) --- */
+        .quiz-hub {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .quiz-level {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: center;
+            text-decoration: none;
             color: white;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow);
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-box h1 { font-family: 'Nunito', sans-serif; font-size: 3rem; margin: 0; }
-        .hero-box p { font-size: 1.2rem; opacity: 0.9; }
-
-        /* --- Poem Sections --- */
-        .poem-section {
-            background: var(--white);
-            border-radius: 25px;
-            padding: 40px;
-            margin-bottom: 50px;
-            box-shadow: var(--shadow);
-            border: 2px solid white;
+        .quiz-level::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
         }
 
-        .poem-header {
-            text-align: center;
-            margin-bottom: 30px;
+        .quiz-level:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
-
-        .poem-title {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 800;
-            font-size: 2.5rem;
-            color: var(--primary);
-            background: -webkit-linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .image-placeholder {
-            width: 100%;
-            height: 250px;
-            background-color: #eee;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: #888;
-            font-style: italic;
-            border: 2px dashed #ccc;
-        }
-
-        /* --- Analysis Cards --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 5px solid var(--primary);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-
-        .card h3 { color: var(--dark); margin-top: 0; display: flex; align-items: center; gap: 10px; }
         
-        .line-ref { font-family: monospace; background: #e0e0e0; padding: 2px 6px; border-radius: 4px; color: #555; font-size: 0.8em; }
+        .quiz-level:hover::before { opacity: 0.1; }
 
-        /* --- Poetic Devices Chips --- */
-        .devices-container { margin-top: 30px; background: #fff8e1; padding: 20px; border-radius: 15px; }
-        .chip {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin: 5px;
-            font-weight: 600;
-        }
-        .chip:nth-child(even) { background: var(--secondary); }
-        .chip:nth-child(3n) { background: #ff7675; }
-
-        /* --- Mind Map Simulation --- */
-        .mind-map {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .mind-node {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 10px 20px;
-            border-radius: 10px;
+        .quiz-level h4 { position: relative; z-index: 1; margin: 15px 0 5px; font-size: 1.2rem; }
+        .quiz-icon { position: relative; z-index: 1; font-size: 2.5rem; display: block; }
+        
+        .grand-test {
+            grid-column: 1 / -1;
+            background: var(--gradient);
             font-weight: bold;
-            box-shadow: 0 4px 0 var(--primary);
-            transition: all 0.2s;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
         }
-        .mind-node:active { transform: translateY(4px); box-shadow: none; }
-
-        /* --- Quiz Section --- */
-        .quiz-section {
-            background: var(--dark);
-            color: white;
-            border-radius: 25px;
-            padding: 40px;
-            text-align: center;
+        .grand-test:hover {
+             box-shadow: 0 15px 40px rgba(236, 72, 153, 0.5);
         }
-
-        .quiz-btn {
-            display: inline-block;
-            background: #00b894;
-            color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 0 #008f72;
-            transition: all 0.2s;
-        }
-
-        .quiz-btn:active { transform: translateY(6px); box-shadow: none; }
-        .quiz-btn.final { background: #e17055; box-shadow: 0 6px 0 #c0392b; }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 40px;
-            color: #636e72;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 80px;
         }
 
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero-box h1 { font-size: 2rem; }
-            .poem-title { font-size: 1.8rem; }
+            .hero h1 { font-size: 3rem; }
+            .col-8, .col-6, .col-4 { grid-column: span 12; }
+            .nav-items { display: none; }
+            nav { justify-content: center; width: auto; padding: 12px 25px; }
+            .bento-grid { gap: 15px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo">📚 Class 8 Poetry</a>
-        <div class="nav-links">
-            <a href="#failure" class="nav-btn">Failure</a>
-            <a href="#innisfree" class="nav-btn">Innisfree</a>
-            <a href="#rocksea" class="nav-btn">Rock & Sea</a>
-            <a href="#helen" class="nav-btn">Helen Keller</a>
-            <a href="#elephant" class="nav-btn">Elephant</a>
-            <a href="#marshlands" class="nav-btn">Marshlands</a>
-            <a href="#quizzes" class="nav-btn">⚡ Quizzes</a>
+        <a href="#" class="nav-logo">⚡ StudyHub 8</a>
+        <div class="nav-items">
+            <a href="#poems" class="nav-link">Poems</a>
+            <a href="#analysis" class="nav-link">Analysis</a>
+            <a href="#quizzes" class="nav-link">Quizzes</a>
         </div>
     </nav>
 
-    <div class="container">
+    <header class="hero">
+        <h1>Master English<br>Poetry</h1>
+        <p>A modern, interactive guide for Class 8 students. Deep analysis, visual learning, and gamified revision.</p>
+        <a href="#poems" class="cta-btn">Start Learning</a>
+    </header>
+
+    <div class="container" id="poems">
+
+        <div class="poem-container reveal">
+            <h2 class="section-title">01. Failure</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card col-4 visual-box">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/14194865659153575851" alt="A climber on a rocky hill, symbolizing struggle and effort">
+                    <div class="visual-caption">Resilience & Grit</div>
+                </div>
+                
+                <div class="bento-card col-8">
+                    <div class="card-label">Core Theme</div>
+                    <h3 class="card-title">Resilience & Grit</h3>
+                    <p class="card-text">"Failure is a rocky hill... Climb it with a will!" The poem uses powerful metaphors to show that failure isn't the end—it's just an obstacle. It transforms the concept of failure from something negative into a challenge to be overcome.</p>
+                    <div class="chip-container">
+                        <span class="chip">Metaphor</span>
+                        <span class="chip">Optimism</span>
+                        <span class="chip">Perseverance</span>
+                    </div>
+                </div>
+
+                <div class="bento-card col-4">
+                    <h3 class="card-title">🦴 The Bone</h3>
+                    <p class="card-text">"Failure is a broken bone... Set it! Grin!"<br>Pain is temporary. Fix what is broken and keep smiling.</p>
+                </div>
+                <div class="bento-card col-4">
+                    <h3 class="card-title">🌊 The River</h3>
+                    <p class="card-text">"Failure is a river swift... Swim it!"<br>Don't just float. Take action and swim against the current.</p>
+                </div>
+                <div class="bento-card col-4">
+                    <h3 class="card-title">💎 The Diamond</h3>
+                    <p class="card-text">"Failure is an ugly coal... Fuse it!"<br>Pressure creates diamonds. Struggles create a brilliant soul.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="poem-container reveal" id="analysis">
+            <h2 class="section-title">02. The Lake Isle of Innisfree</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card col-8">
+                    <div class="card-label">W.B. Yeats</div>
+                    <h3 class="card-title">The Call of Nature</h3>
+                    <p class="card-text">The poet longs to escape the "grey pavements" of the city. He wants a cabin of clay and wattles, nine bean rows, and a hive for the honey bee. He hears the lake water lapping in his "deep heart's core."</p>
+                    <div class="chip-container">
+                        <span class="chip">Peace</span>
+                        <span class="chip">Solitude</span>
+                        <span class="chip">Nature Imagery</span>
+                    </div>
+                </div>
+                <div class="bento-card col-4 visual-box">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/2535962855261149648" alt="Rustic cabin on The Lake Isle of Innisfree">
+                </div>
+
+                <div class="bento-card col-6">
+                    <div class="card-label">Imagery</div>
+                    <h3 class="card-title">Peace Dropping Slow</h3>
+                    <p class="card-text">Morning mist (veils), cricket songs, purple noon glow, and evening full of linnet's wings. Nature provides a rhythm of peace.</p>
+                </div>
+                <div class="bento-card col-6">
+                    <div class="card-label">Contrast</div>
+                    <h3 class="card-title">City vs. Isle</h3>
+                    <p class="card-text"><strong>City:</strong> Noise, roadways, grey pavements.<br><strong>Innisfree:</strong> Solitude, bee-loud glade, glimmering midnight.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="poem-container reveal">
+            <h2 class="section-title">03. The Rock and the Sea</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card col-12 visual-box" style="height: 350px;">
+                    <img src="
+
+http://googleusercontent.com/image_collection/image_retrieval/17006749832899659937
+" alt="Massive rock being eroded by the sea">
+                    <div class="visual-caption">Dialogue of Nature</div>
+                </div>
+
+                <div class="bento-card col-6">
+                    <h3 class="card-title">🪨 The Rock</h3>
+                    <p class="card-text">"I am set to limit thy power."<br>Represents <strong>Stability, Resistance, Pride</strong>. It believes it is unmovable.</p>
+                </div>
+                <div class="bento-card col-6">
+                    <h3 class="card-title">🌊 The Sea</h3>
+                    <p class="card-text">"I hold the land as one holds an apple."<br>Represents <strong>Time, Change, Persistence</strong>. It grinds cliffs into pebbles over time.</p>
+                </div>
+                <div class="bento-card col-12" style="background: rgba(99, 102, 241, 0.15); border-color: var(--primary);">
+                    <p class="card-text" style="text-align: center; color: white;"><strong>The Moral:</strong> Even the hardest resistance eventually yields to persistence and time.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="poem-container reveal">
+            <h2 class="section-title">04. The Elephant & The Tragopan</h2>
+            
+            <div class="bento-grid">
+                 <div class="bento-card col-6">
+                    <div class="card-label">The Conflict</div>
+                    <h3 class="card-title">Man vs. Nature</h3>
+                    <p class="card-text">The Elephant warns the animals. Humans are "mild and vicious." They create art but destroy forests. "When the road comes, the forest goes."</p>
+                </div>
+                <div class="bento-card col-6 visual-box">
+                    <img src="
+
+http://googleusercontent.com/image_collection/image_retrieval/17222772076173057842
+" alt="Elephant in a dense forest facing a new road">
+                </div>
+                
+                <div class="bento-card col-4">
+                    <div class="card-label">Warning</div>
+                    <h3 class="card-title">Destruction</h3>
+                    <p class="card-text">Bamboo slashed, soot killing the trout, leopards fleeing from reservoirs.</p>
+                </div>
+                <div class="bento-card col-8" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+                    <div class="card-label" style="color: white;">The Solution</div>
+                    <h3 class="card-title" style="color: white;">Unity in Survival</h3>
+                    <p class="card-text" style="color: white;">"We must unite in fur and feather / For we will live or die together."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="poem-container reveal">
+            <h2 class="section-title">05. Marshlands</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card col-12 visual-box" style="height: 350px;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/13120496925019631766" alt="Stagnant, gloomy marshland with thin wet sky">
+                    <div class="visual-caption">Stagnation & Decay</div>
+                </div>
+                <div class="bento-card col-12">
+                    <h3 class="card-title">The Beauty of Decay</h3>
+                    <p class="card-text">A picture of stagnation. "Thin wet sky," pools like "cups of gold" (due to rot/disease), monotonous lizard sounds. It symbolizes a life without movement or progress.</p>
+                    <div class="chip-container">
+                        <span class="chip">Imagery</span>
+                        <span class="chip">Onomatopoeia ("shrills")</span>
+                        <span class="chip">Simile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <header class="hero-box">
-            <h1>English Poetry Masterclass</h1>
-            <p>Analysis • Themes • Poetic Devices • Revision Notes</p>
-        </header>
-
-        <section id="failure" class="poem-section">
-            <div class="poem-header">
-                
-                <h2 class="poem-title">Failure</h2>
-                <p>Understanding resilience through metaphors</p>
-            </div>
-
-            <div class="grid-container">
-                <div class="card">
-                    <h3>⛰️ The Hill</h3>
-                    <p><strong>"Failure is a rocky hill... Climb it with a will!"</strong><br>
-                    Failure is difficult, but you must climb it with strong determination.</p>
-                </div>
-                <div class="card">
-                    <h3>🦴 The Bone</h3>
-                    <p><strong>"Failure is a broken bone... Set it! Grin!"</strong><br>
-                    It hurts, but you must fix it. Don't complain; smile and heal.</p>
-                </div>
-                <div class="card">
-                    <h3>🌊 The River</h3>
-                    <p><strong>"Failure is a river swift... Swim it!"</strong><br>
-                    Don't drift aimlessly. Take control and swim against the current.</p>
-                </div>
-                <div class="card">
-                    <h3>💎 The Diamond</h3>
-                    <p><strong>"Failure is an ugly coal... Fuse it!"</strong><br>
-                    Pressure turns coal into a diamond. Failure makes your soul brilliant.</p>
-                </div>
-            </div>
-
-            <div class="devices-container">
-                <h3>✨ Quick Revision Tags</h3>
-                <div>
-                    <span class="chip">Determination</span>
-                    <span class="chip">Resilience</span>
-                    <span class="chip">Metaphor</span>
-                    <span class="chip">Optimism</span>
-                    <span class="chip">Transformation</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="innisfree" class="poem-section">
-            <div class="poem-header">
-                
-                <h2 class="poem-title">The Lake Isle of Innisfree</h2>
-                <p>By W.B. Yeats</p>
-            </div>
-
-            <div class="card" style="margin-bottom: 20px;">
-                <h3>🌿 Stanza 1: The Wish</h3>
-                <p>The poet wants to build a clay cabin, grow beans, keep bees, and live alone in a "bee-loud glade." He seeks a simple, self-sufficient life.</p>
-            </div>
+        <div class="poem-container reveal">
+            <h2 class="section-title">06. Helen Keller</h2>
             
-            <div class="card" style="margin-bottom: 20px;">
-                <h3>🕊️ Stanza 2: Peace</h3>
-                <p>Peace comes "dropping slow." He describes the mist of the morning, the cricket's song, the purple noon glow, and the linnet birds flying in the evening.</p>
-            </div>
+            <div class="bento-grid">
+                <div class="bento-card col-6 visual-box">
+                     <img src="
 
-            <div class="card" style="margin-bottom: 20px;">
-                <h3>❤️ Stanza 3: Deep Heart's Core</h3>
-                <p>Even on the "grey pavements" of the city, he hears the lake water lapping. The memory of nature is always with him.</p>
-            </div>
-
-            <h3>🧠 Mind Map Revision</h3>
-            <div class="mind-map">
-                <div class="mind-node">SOLITUDE</div>
-                <div class="mind-node">NATURE IMAGERY</div>
-                <div class="mind-node">PEACE COMES SLOW</div>
-                <div class="mind-node">CITY vs NATURE</div>
-                <div class="mind-node">HEART'S CORE</div>
-                <div class="mind-node">CLAY CABIN</div>
-            </div>
-        </section>
-
-        <section id="rocksea" class="poem-section">
-            <div class="poem-header">
-                
-                <h2 class="poem-title">The Rock and the Sea</h2>
-                <p>A Dialogue of Nature</p>
-            </div>
-
-            <div class="grid-container">
-                <div class="card">
-                    <h3>🪨 The Rock Speaks</h3>
-                    <p><strong>"I am the Rock... I am set to limit thy power."</strong><br>
-                    The Rock represents stability, pride, and resistance. It claims it will stop the sea, whether the sea is angry or gentle.</p>
+http://googleusercontent.com/image_collection/image_retrieval/8013627219207731646
+" alt="Helen Keller finding light in the darkness, a metaphor">
                 </div>
-                <div class="card">
-                    <h3>🌊 The Sea Speaks</h3>
-                    <p><strong>"I am the Sea. I hold the land."</strong><br>
-                    The Sea represents time, change, and persistence. It turns granite to clay and cliffs to pebbles. It plays with the land.</p>
+                <div class="bento-card col-6">
+                    <div class="card-label">Inner Vision</div>
+                    <h3 class="card-title">Light Within Darkness</h3>
+                    <p class="card-text">"She, in the dark, found light." The poem celebrates how she found knowledge and beauty through the "soul's own mastery" despite being blind and deaf.</p>
+                    <div class="chip-container">
+                        <span class="chip">Inspiration</span>
+                        <span class="chip">Willpower</span>
+                        <span class="chip">Soul's Mastery</span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="devices-container">
-                <h3>✨ Poetic Devices</h3>
-                <span class="chip">Personification</span>
-                <span class="chip">Contrast (Stability vs Change)</span>
-                <span class="chip">Imagery</span>
-                <span class="chip">Metaphor</span>
-                <p style="margin-top:10px;"><em>Moral: Nothing stays unchanged forever; persistence (water) overcomes resistance (rock) over time.</em></p>
-            </div>
-        </section>
+        <div class="poem-container reveal" id="quizzes">
+            <h2 class="section-title">🎮 Knowledge Check</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 1.2rem;">Select a level to start your test.</p>
 
-        <section id="helen" class="poem-section">
-            <div class="poem-header">
-                
-                <h2 class="poem-title">Helen Keller</h2>
-                <p>Vision from Within</p>
+            <div class="quiz-hub">
+                <a href="https://forms.gle/Wki5imUKdDuweCNF7" target="_blank" class="quiz-level">
+                    <span class="quiz-icon">🏝️</span>
+                    <h4>Innisfree</h4>
+                </a>
+                <a href="https://forms.gle/4YnccQpQwTU3YksFA" target="_blank" class="quiz-level">
+                    <span class="quiz-icon">🧗</span>
+                    <h4>Failure</h4>
+                </a>
+                <a href="https://forms.gle/YoxZ2s2yXV8phMC98" target="_blank" class="quiz-level">
+                    <span class="quiz-icon">🕯️</span>
+                    <h4>Helen Keller</h4>
+                </a>
+                <a href="https://forms.gle/wepBYoNgMtDBu8tM7" target="_blank" class="quiz-level">
+                    <span class="quiz-icon">🌊</span>
+                    <h4>Rock & Sea</h4>
+                </a>
+                <a href="https://forms.gle/nesgMoWKAidG2Dwo7" target="_blank" class="quiz-level">
+                    <span class="quiz-icon">🐘</span>
+                    <h4>Elephant</h4>
+                </a>
+                <a href="https://forms.gle/5Wtez9BHF4F9EF58A" target="_blank" class="quiz-level">
+                    <span class="quiz-icon">🌾</span>
+                    <h4>Marshlands</h4>
+                </a>
+                <a href="https://forms.gle/KVY8meJ3MhCAgasg8" target="_blank" class="quiz-level grand-test">
+                    <span class="quiz-icon">🏆</span>
+                    <h4>GRAND FINAL BOSS</h4>
+                </a>
             </div>
-
-            <div class="card">
-                <h3>🕯️ From Darkness to Light</h3>
-                <p><strong>"She, In the dark, Found light"</strong><br>
-                Although she was blind (darkness), she found knowledge and wisdom (light). The poem emphasizes that true vision comes from the "soul's own mastery," not the eyes.</p>
-            </div>
-            
-            <div class="mind-map" style="margin-top: 20px;">
-                <div class="mind-node">INNER STRENGTH</div>
-                <div class="mind-node">PERSEVERANCE</div>
-                <div class="mind-node">LIGHT = KNOWLEDGE</div>
-                <div class="mind-node">DARK = DISABILITY</div>
-            </div>
-        </section>
-
-        <section id="elephant" class="poem-section">
-            <div class="poem-header">
-                
-                <h2 class="poem-title">The Elephant and the Tragopan</h2>
-                <p>A Plea for Conservation</p>
-            </div>
-
-            <div class="card" style="margin-bottom: 20px; background: #e3f2fd;">
-                <h3>🐘 The Elephant's Speech</h3>
-                <p>The Elephant acts as the leader. He describes humans as "mild and vicious" — capable of creating art but also destroying nature. He warns the animals that humans will cut the bamboo, burn the rhododendrons, and build reservoirs.</p>
-            </div>
-
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Human Cruelty</h3>
-                    <p>Wearing leopard spots, using ivory for combs, shooting birds for fun, and forcing bears to dance.</p>
-                </div>
-                <div class="card">
-                    <h3>The Warning</h3>
-                    <p>"When the road comes, the forest goes." Pollution (soot/filth) will kill the fish (Trout). Leopards and deer will lose their homes.</p>
-                </div>
-                <div class="card">
-                    <h3>The Solution</h3>
-                    <p><strong>Unity.</strong> "We must unite in fur and feather / For we will live or die together."</p>
-                </div>
-            </div>
-
-            <div class="devices-container">
-                <h3>✨ Literary Devices</h3>
-                <span class="chip">Alliteration ("fur and feather")</span>
-                <span class="chip">Antithesis ("mild and vicious")</span>
-                <span class="chip">Personification</span>
-                <span class="chip">Rhyme</span>
-            </div>
-        </section>
-
-        <section id="marshlands" class="poem-section">
-            <div class="poem-header">
-                
-                <h2 class="poem-title">Marshlands</h2>
-                <p>The Beauty of Stagnation</p>
-            </div>
-
-            <div class="card">
-                <h3>🍂 Atmosphere Analysis</h3>
-                <p>The poem paints a picture of a <strong>stagnant, lifeless place</strong>.
-                <br>• <strong>Sky:</strong> "Thin wet sky", "yellows at the rim".
-                <br>• <strong>Pools:</strong> "Dank with moss", looking like "cups of gold".
-                <br>• <strong>Sounds:</strong> The monotonous shrill of a lizard.
-                <br>• <strong>Twilight:</strong> Described as a "spirit swathed in some soft veil".</p>
-            </div>
-
-            <div class="devices-container">
-                <h3>✨ Poetic Devices</h3>
-                <span class="chip">Imagery (Visual/Tactile)</span>
-                <span class="chip">Simile ("like large cups of gold")</span>
-                <span class="chip">Personification ("marshes sleep")</span>
-                <span class="chip">Onomatopoeia ("shrills")</span>
-            </div>
-            
-            <div class="mind-map" style="margin-top: 15px;">
-                <div class="mind-node">THEME: DECAY</div>
-                <div class="mind-node">SYMBOL: STAGNATION</div>
-                <div class="mind-node">MOOD: GLOOMY</div>
-            </div>
-        </section>
-
-        <section id="quizzes" class="quiz-section">
-            
-            <h2 style="font-size: 2.5rem; margin-bottom: 30px;">🎮 Test Your Knowledge!</h2>
-            <p>Click the buttons below to take the chapter-wise tests.</p>
-            
-            <div style="margin-top: 30px;">
-                <a href="https://forms.gle/Wki5imUKdDuweCNF7" target="_blank" class="quiz-btn">Lake Isle of Innisfree</a>
-                <a href="https://forms.gle/4YnccQpQwTU3YksFA" target="_blank" class="quiz-btn">Failure</a>
-                <a href="https://forms.gle/YoxZ2s2yXV8phMC98" target="_blank" class="quiz-btn">Helen Keller</a>
-                <a href="https://forms.gle/wepBYoNgMtDBu8tM7" target="_blank" class="quiz-btn">Rock and the Sea</a>
-                <a href="https://forms.gle/nesgMoWKAidG2Dwo7" target="_blank" class="quiz-btn">Elephant & Tragopan</a>
-                <a href="https://forms.gle/5Wtez9BHF4F9EF58A" target="_blank" class="quiz-btn">Marshlands</a>
-                <br>
-                <a href="https://forms.gle/KVY8meJ3MhCAgasg8" target="_blank" class="quiz-btn final">🏆 GRAND FINAL TEST</a>
-            </div>
-        </section>
-
-        <section id="about" style="text-align: center; margin-top: 50px;">
-            <h3 style="color: var(--primary);">👋 About This App</h3>
-            <p style="max-width: 600px; margin: 0 auto;">
-                Created to help Class 8 students understand English poems deeply instead of memorising. 
-                Our aim is to make English learning simple, engaging, and stress-free!
-            </p>
-        </section>
-
-        <footer>
-            <p>© 2024 StudyHub Class 8 | Made with ❤️ for Students</p>
-        </footer>
+        </div>
 
     </div>
 
+    <footer>
+        <p>Created for Class 8 Students • StudyHub 2025</p>
+        <p style="opacity: 0.5; font-size: 0.8rem; margin-top: 10px;">Explanations & Visuals for Deep Learning</p>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation Script
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
 </body>
 </html>
